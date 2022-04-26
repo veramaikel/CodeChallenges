@@ -40,7 +40,7 @@ public class GraphProject {
         return projects.values().stream().sorted().collect(Collectors.toList());
     }
 
-    boolean isValidOrder(Project project, List<String> taken){
+    private boolean isValidOrder(Project project, List<String> taken){
 
         if(!taken.isEmpty() && !project.getParents().isEmpty()){
             return taken.containsAll(project.getParents());
@@ -49,7 +49,7 @@ public class GraphProject {
         return true;
     }
 
-    String getErrorMessage(Project project){
+    private String getErrorMessage(Project project){
         List<String> cycle = findChild(project, project);
         cycle.add(project.getName());
 
